@@ -36,6 +36,13 @@ class ExampleUnitTest {
         val user4 = User.makeUser(null)
         val user5 = User.makeUser(" ")
         val user6 = User.makeUser("Jhon")
-        println("$user")
+        val user7 = User.makeUser("")
+        println(user)
+        println(user2)
+        println(user3)
+        println(user4)
+        println(user5)
+        println(user6)
+        println(user7)
     }
 }
