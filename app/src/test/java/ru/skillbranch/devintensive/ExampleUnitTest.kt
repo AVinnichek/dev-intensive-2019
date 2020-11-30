@@ -24,8 +24,18 @@ class ExampleUnitTest {
 //        val user2 = User("3","John","Silverhand",null,lastVisit = Date(),isOnline = true)
 
         println("$user ")
-        user.printMe()
 //        user1.printMe()
 //        user2.printMe()
+    }
+
+    @Test
+    fun test_factory(){
+        val user = User.makeUser("John Weak")
+        val user2 = User.makeUser("John Silver")
+        val user3 = User.makeUser("John Gold")
+        val user4 = User.makeUser(null)
+        val user5 = User.makeUser(" ")
+        val user6 = User.makeUser("Jhon")
+        println("$user")
     }
 }
