@@ -6,13 +6,8 @@ object Utils {
         val firstName = checkEmpty(parts?.getOrNull(0))
         val lastName = checkEmpty(parts?.getOrNull(1))
 
-      //  firstName = if(firstName.isNullOrEmpty()) "InvalidName" else firstName
-      //  lastName = if(lastName.isNullOrEmpty()) "InvalidLastname" else lastName
-
         return firstName to lastName
     }
 
-    private fun checkEmpty(inputString:String?) : String? {
-        return if(inputString.isNullOrBlank()) null else inputString
-    }
+    private fun checkEmpty(inputString:String?) = if(inputString.isNullOrBlank()) null else inputString
 }
