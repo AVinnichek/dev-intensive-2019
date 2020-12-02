@@ -9,6 +9,9 @@ const val MINUTE = 60* SECOND
 const val HOUR = 60* MINUTE
 const val DAY = 24* HOUR
 
+fun Date.humanizeDiff(): String {
+    TODO("Make implementation")}
+
 fun Date.format(pattern:String="HH:mm:ss dd.MM.yy") : String{
     val dateFormat = SimpleDateFormat(pattern,Locale("ru"))
     return dateFormat.format(this)
@@ -36,5 +39,3 @@ enum class TimeUnits{
     DAY
 }
 
-private fun Date.humanizeDiff(): String {
-    TODO("Make implementation")}
