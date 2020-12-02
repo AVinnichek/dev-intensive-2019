@@ -10,4 +10,12 @@ object Utils {
     }
 
     private fun checkEmpty(inputString:String?) = if(inputString.isNullOrBlank()) null else inputString
+
+    fun transliteration(payload: String, devider:String = " "): String {
+        TODO("Make implementation")
+    }
+
+    fun toInitials(firstName: String?, lastName: String?): String? {
+        TODO("Make implementation")
+    }
 }
