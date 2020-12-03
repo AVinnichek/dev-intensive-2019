@@ -108,7 +108,7 @@ class ExampleUnitTest {
 
     @Test
     fun test_data_mapping(){
-        val user = User.makeUser("Винничек Антон")
+        val user = User.makeUser("Винничек")
         println("$user")
         val userView = user.toUserView()
 
@@ -117,7 +117,7 @@ class ExampleUnitTest {
 
     @Test
     fun test_abstract_factory(){
-        val user = User.makeUser("Винничек Антон")
+        val user = User.makeUser("Винничек")
         val txtMessage = BaseMessage.makeMessage(user, Chat("1"),payload = "any text message",type = "text")
         val imageMessage = BaseMessage.makeMessage(user, Chat("1"),payload = "any image url",type = "image")
 
