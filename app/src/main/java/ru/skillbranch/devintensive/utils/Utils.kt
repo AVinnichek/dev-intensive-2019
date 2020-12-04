@@ -11,21 +11,20 @@ object Utils {
 
     private fun checkEmpty(inputString:String?) = if(inputString.isNullOrBlank()) null else inputString
 
-    fun transliteration(payload: String, devider:String = " "): String {
+   /* fun transliteration(payload: String, devider:String = " "): String {
         var (firstWord,secondWord) = parseFullName(payload)
         firstWord = transliterateWord(firstWord)
         secondWord = transliterateWord(secondWord)
-        return "$firstWord$devider$secondWord"
-    }//it's work
+        return "$firstWord$devider${secondWord?:""}"
+    }//it's work*/
 
-            /*  fun transliteration(payload: String, devider:String = " "): String{
-        var parts:List<String?> = payload.split(devider)
-        parts.forEach { part ->
-            it = transliterateWord(it)
+    fun transliteration(payload: String, devider:String = " ") = mutableListOf<String>().apply{
+        payload.split(devider).forEach {word ->
+            transliterateWord(word)?.let{
+                this.add(it)
+            }
         }
-        return parts.joinToString(devider)
-    }*/
-
+    }.joinToString(devider)
     private fun transliterateWord(word:String?) : String?{
          if(word.isNullOrBlank()) return null
         var resultString:String = ""
@@ -79,6 +78,6 @@ object Utils {
     fun toInitials(firstName: String?, lastName: String?): String? {
         val name = firstName?.firstOrNull()
         val surname = lastName?.firstOrNull()
-        return "$name$surname"
+        return "${name?:""}${surname?:""}"
     }
 }

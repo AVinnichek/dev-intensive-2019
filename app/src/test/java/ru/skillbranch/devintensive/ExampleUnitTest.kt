@@ -3,10 +3,7 @@ package ru.skillbranch.devintensive
 import org.junit.Test
 
 import org.junit.Assert.*
-import ru.skillbranch.devintensive.extentions.TimeUnits
-import ru.skillbranch.devintensive.extentions.add
-import ru.skillbranch.devintensive.extentions.format
-import ru.skillbranch.devintensive.extentions.toUserView
+import ru.skillbranch.devintensive.extentions.*
 import ru.skillbranch.devintensive.models.BaseMessage
 import ru.skillbranch.devintensive.models.Chat
 import ru.skillbranch.devintensive.models.User
@@ -108,11 +105,34 @@ class ExampleUnitTest {
 
     @Test
     fun test_data_mapping(){
-        val user = User.makeUser("Винничек")
+        val user = User.makeUser("Винничек Антон")
         println("$user")
         val userView = user.toUserView()
-
         userView.printMe()
+    }
+
+    @Test
+    fun test_pattern_builder(){
+        val user = User.Builder().id("1")
+                .firstName("Антон")
+                .lastName("Винничек")
+                .avatar(null)
+                .rating(95)
+                .respect(96)
+                .lastVisit(Date().add(-2,TimeUnits.HOUR))
+                .isOnline(true)
+                .build()
+        println(user)
+
+        val userView = user.toUserView()
+        userView.printMe()
+    }
+
+    @Test
+    fun test_string_truncate(){
+        println("Bender Bending Rodriguez — дословно «Сгибальщик Сгибающий Родригес»".truncate())
+        println("Bender Bending Rodriguez — дословно «Сгибальщик Сгибающий Родригес»".truncate(15))
+        println("A     ".truncate(3))
     }
 
     @Test
