@@ -105,11 +105,34 @@ class ExampleUnitTest {
 
     @Test
     fun test_data_mapping(){
-        val user = User.makeUser("Винничек Антон")
+        val user = User.makeUser("")
         println("$user")
         val userView = user.toUserView()
         userView.printMe()
     }
+
+    @Test
+    fun test_to_initials(){
+        val user = User.Builder().id("1")
+                .firstName(null)
+                .lastName("Винничек")
+                .avatar(null)
+                .rating(95)
+                .respect(96)
+                .lastVisit(Date().add(-2,TimeUnits.HOUR))
+                .isOnline(true)
+                .build()
+        val userView = user.toUserView()
+        userView.printMe()
+    }
+
+    @Test
+    fun test_stripHtml(){
+        var string:String = "<p class=\"title\">Образовательное IT-сообщество Skill Branch</p>"
+        println(string.stripHtml())
+    }
+
+
 
     @Test
     fun test_pattern_builder(){

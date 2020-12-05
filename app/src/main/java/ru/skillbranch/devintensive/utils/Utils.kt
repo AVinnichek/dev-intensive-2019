@@ -1,5 +1,8 @@
 package ru.skillbranch.devintensive.utils
 
+
+import kotlin.text.StringBuilder
+
 object Utils {
     fun parseFullName(fullName:String?) : Pair<String?,String?>{
         val parts:List<String>? = fullName?.split(" ")
@@ -75,9 +78,22 @@ object Utils {
         return if(isUpperCase) resultString.toUpperCase() else resultString
     }
 
-    fun toInitials(firstName: String?, lastName: String?): String? {
-        val name = firstName?.firstOrNull()
+   /* fun toInitials1(firstName: String?, lastName: String?): String? {
+        var name = firstName?.firstOrNull()
+        if(name?.isWhitespace()) name = null
         val surname = lastName?.firstOrNull()
-        return "${name?:""}${surname?:""}"
+        return "${name}${surname?:""}"
+    }*/
+
+    fun toInitials(firstName: String?, lastName: String?) = StringBuilder().apply {
+        val nullValue : Char? = null
+        addInitials(this,firstName)
+        addInitials(this,lastName)
+        if(this.isEmpty()) this.append(nullValue)
+    }.toString()
+
+    private fun addInitials(builder:StringBuilder,string:String?){
+        string?.firstOrNull(){it.isLetter()}?.let{builder.append(it.toUpperCase())}
     }
+
 }

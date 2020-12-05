@@ -5,3 +5,9 @@ fun String.truncate(limit:Int = 16):String{
     val resultString = this.take(limit).dropLastWhile { !it.isLetter() }
     return if(cutted) resultString.plus("...") else resultString
 }
+
+fun String.stripHtml():String{
+    val regexRemoveHtml = Regex("<.*?>")
+    val regexRemoveMoreSpace = Regex("\\s+")
+    return this.replace(regexRemoveHtml,"").replace(regexRemoveMoreSpace," ")
+}
