@@ -22,7 +22,7 @@ abstract class BaseMessage(
         ):BaseMessage{
             lastId++;
             return when(type){
-                "text" -> TextMessage("$lastId",from = user,chat,date = date,text = payload as String)
+                "text" -> TextMessage("$lastId",from = user,chat = chat,date = date,text = payload as String)
                 else -> ImageMessage(id = "$lastId",from = user,chat = chat,date = date,image = payload as String)
             }
 
