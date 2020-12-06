@@ -143,7 +143,7 @@ class ExampleUnitTest {
                 .rating(95)
                 .respect(96)
                 .lastVisit(Date().add(-2,TimeUnits.HOUR))
-                .isOnline(true)
+                .isOnline(false)
                 .build()
         println(user)
 
@@ -164,8 +164,43 @@ class ExampleUnitTest {
         val txtMessage = BaseMessage.makeMessage(user, Chat("1"),payload = "any text message",type = "text")
         val imageMessage = BaseMessage.makeMessage(user, Chat("1"),payload = "any image url",type = "image")
 
+        val user1 = User.Builder().id("1")
+                .firstName("Антон")
+                .lastName("Винничек")
+                .avatar(null)
+                .rating(95)
+                .respect(96)
+                .lastVisit(Date().add(-2,TimeUnits.HOUR))
+                .isOnline(true)
+                .build()
+
+        val txtMessage1 = BaseMessage.makeMessage(user1, Chat("1"),payload = "any text message",type = "text")
+        val imageMessage1 = BaseMessage.makeMessage(user1, Chat("1"),payload = "any image url",type = "image")
+
         println("${txtMessage.formatMessage()}")
         println("${imageMessage.formatMessage()}")
+
+        println("${txtMessage1.formatMessage()}")
+        println("${imageMessage1.formatMessage()}")
+    }
+
+    @Test
+    fun test_plural(){
+        for (second in 0..60) {
+            println(TimeUnits.SECOND.plural(second))
+        }
+
+        for (minute in 0..60) {
+            println(TimeUnits.MINUTE.plural(minute))
+        }
+
+        for (hour in 0..25) {
+            println(TimeUnits.HOUR.plural(hour))
+        }
+
+        for(day in 0 .. 340) {
+            println(TimeUnits.DAY.plural(day))
+        }
     }
 }
 
