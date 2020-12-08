@@ -22,7 +22,7 @@ object Utils {
     }//it's work*/
 
     fun transliteration(payload: String, devider:String = " ") = mutableListOf<String>().apply{
-        payload.split(devider).forEach {word ->
+        payload.split(" ").forEach {word ->
             transliterateWord(word)?.let{
                 this.add(it)
             }
@@ -73,7 +73,7 @@ object Utils {
            'э'-> "e"
            'ю'-> "yu"
            'я'-> "ya"
-           else ->" "
+           else ->symbol.toString()
         }
         return if(isUpperCase) resultString.toUpperCase() else resultString
     }

@@ -114,7 +114,7 @@ class ExampleUnitTest {
     @Test
     fun test_to_initials(){
         val user = User.Builder().id("1")
-                .firstName(null)
+                .firstName("Антон")
                 .lastName("Винничек")
                 .avatar(null)
                 .rating(95)
